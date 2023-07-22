@@ -71,6 +71,9 @@ With the following project level environmental variable:
 
 ![Vercel HUGO_VERSION EnvVar](/vercel_environmental_variable.png)
 
+Vercel threw a build error with any version in the `vercel.json` file that had a leading `v` in the version (IE, v.0.115.4).
+
+
 ## Conclusion
 
 Now the version of Hugo used locally can stay up to date easily by updating the `vercel.json` file (until the `vercel.json` file is deprecated).
