@@ -47,12 +47,12 @@ This first batch or errors was easily fixed by removing a line in an HTML file b
 
 ### Back to Local Site Definition
 
-I destroyed the git repo on Github and the Vercel project and decided to start over by again creating the site locally on Mac, pushing the code to Github, and then linking the repo to Vercel.  But this time, I would use one of the two methods previously mentioned to set the Hugo version used by Vercel.  
+I destroyed the git repo on Github and the Vercel project and decided to start over by again creating the site locally on my Mac, pushing the code to Github, and then linking the repo to Vercel.  But this time, I would use one of the two methods previously mentioned to set the Hugo version used by Vercel.  
 
 Long story short, here are the lessons learned:
 
 - The `vercel.json` file seems to take precedence over the project environmental variables (even though the project environmental variables are the way to go according to the [docs](https://vercel.com/guides/how-do-i-migrate-away-from-vercel-json-env-and-build-env))
-- The Hugo version can't have a leading `v` in the `vercel.json` file
+- The Hugo version can't have a leading `v` in the `vercel.json` file even though that's how Hugo defines the versions
 
 The reason I learned the first bullet is in part due to the second bullet.  The first successful deployment of this site had the following `vercel.json`:
 
@@ -73,4 +73,4 @@ With the following project level environmental variable:
 
 ## Conclusion
 
-Now the version of Hugo used locally can stay up to date easily by updating the `vercel.json` file (until it's deprecated).
+Now the version of Hugo used locally can stay up to date easily by updating the `vercel.json` file (until the `vercel.json` file is deprecated).
