@@ -40,7 +40,7 @@ Built in 15 ms
 Error: error building site: render: failed to render pages: render of "home" failed: execute of template failed: html/template:index.html:40:17: no such template "_internal/google_news.html"
 ```
 
-This first batch or errors was easily fixed by removing a line in an HTML file but more errors came right behind it.  This felt like a faulty path to go down.  Not being able to do local development easily was a huge false start.  I found that there are two ways to pick which version of Hugo you want to use to build the Vercel side:
+This first batch or errors was easily fixed by removing a line in an HTML file but more errors came right behind it.  This felt like a faulty path to go down.  Not being able to do local development easily was a huge false start.  I found that there are two ways to pick which version of Hugo you want to use on the Vercel side:
 
 - Environmental variable defined within the project settings in [Vercel](https://vercel.com/docs/concepts/projects/environment-variables)
 - Creating a [`vercel.json`](https://vercel.com/docs/concepts/projects/project-configuration) file in the root of the directory and defining the Hugo version there
