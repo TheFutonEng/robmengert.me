@@ -10,7 +10,7 @@ I spent some time trying to get a [Hugo](https://gohugo.io/) site stood up on [V
 
 ## Using the Latest Hugo Version
 
-At the time of this writing, the latest Hugo version was v0.115.4.  I followed the [Hugo quick start guide](https://gohugo.io/getting-started/quick-start/) and installed Hugo and Dart Sass via homebrew.  Getting a local site on my Mac stood up took minutes, super easy.  After pushing the site Github and then linking it to Vercel, it wasn't rendering properly.  That turned out just to be a consequence of how the repo was setup.  In short:
+At the time of this writing, the latest Hugo version was v0.115.4.  I followed the [Hugo quick start guide](https://gohugo.io/getting-started/quick-start/) and installed Hugo and Dart Sass via homebrew.  Getting a local site on my Mac stood up took minutes, super easy.  After pushing the site to Github and then linking it to Vercel, it wasn't rendering properly.  That turned out just to be a consequence of how the repo was setup.  In short:
 
 **Working**
 ```bash
