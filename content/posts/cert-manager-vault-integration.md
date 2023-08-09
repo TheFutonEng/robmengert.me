@@ -31,8 +31,8 @@ CA Details
 Some important details to know about the setup. The CA was stood up using [this guide](https://jamielinux.com/docs/openssl-certificate-authority/index.html) with one important tweak. The [openssl.cnf file](https://jamielinux.com/docs/openssl-certificate-authority/appendix/intermediate-configuration-file.html) used for the intermediate CA in that guide has the following section for v3   _intermediate_ca:
 
 ```bash
-\[ v3_intermediate_ca \]  
-\# Extensions for a typical intermediate CA (\`man x509v3_config\`).  
+[ v3_intermediate_ca ]  
+# Extensions for a typical intermediate CA (`man x509v3_config`).  
 subjectKeyIdentifier = hash  
 authorityKeyIdentifier = keyid:always,issuer  
 basicConstraints = critical, CA:true, pathlen:0  
@@ -42,8 +42,8 @@ keyUsage = critical, digitalSignature, cRLSign, keyCertSign
 The important detail to be modified is on the `basicConstraints` line. The `pathlen:0` argument means that no further intermediate CA certs can be cut off of this certificate. However, that is exactly what Vault is going to be asked to do so while standing up the CA. The above snippet was changed to the following:
 
 ```bash
-\[ v3_intermediate_ca \]  
-\# Extensions for a typical intermediate CA (\`man x509v3_config\`).  
+[ v3_intermediate_ca ]  
+# Extensions for a typical intermediate CA (`man x509v3_config`).  
 subjectKeyIdentifier = hash  
 authorityKeyIdentifier = keyid:always,issuer  
 basicConstraints = critical, CA:true  
@@ -65,7 +65,7 @@ The bundle to be uploaded to Vault can now be prepped since the intermediate key
 
 ```bash
 cd /root/ca  
-cat intermediate/certs/intermediate.cert.pem \\  
+cat intermediate/certs/intermediate.cert.pem \  
 intermediate/private/decrypted_key.pem certs/ca.cert.pem > vault_bundle.pem
 ```
 
@@ -74,7 +74,7 @@ Snippet from the [Vault docs](https://developer.hashicorp.com/vault/api-docs/sec
 To that end, the pem bundle must be reformatted:
 
 ```bash
-pem_bundle_value=$(awk '{printf "%s\\\\n", $0}' vault_bundle.pem)  
+pem_bundle_value=$(awk '{printf "%s\\n", $0}' vault_bundle.pem)  
 echo '{"pem_bundle": "'"${pem_bundle_value}"'"}' > vault_bundle.json
 ```
 
@@ -88,8 +88,8 @@ Vault was installed using Helm with some custom values in a values.yaml file.
 ```bash
 kubectl create ns vault  
 helm repo add hashicorp https://helm.releases.hashicorp.com  
-helm upgrade -i vault hashicorp/vault --version 0.23.0 \\  
-\-n vault -f values.yaml
+helm upgrade -i vault hashicorp/vault --version 0.23.0 \  
+-n vault -f values.yaml
 ```
 
 Note, the namespace was created imperatively before the `helm` command was run.
@@ -163,26 +163,26 @@ kind: Secret
 metadata:  
   name: ca-cert  
   namespace: vault  
-\---  
+---  
 apiVersion: v1  
 kind: ServiceAccount  
 metadata:  
   name: kubectl-vault  
   namespace: vault  
-\---  
+---  
 kind: Role  
 apiVersion: rbac.authorization.k8s.io/v1  
 metadata:  
   namespace: vault  
   name: pod-exec  
 rules:  
-\- apiGroups: \[""\]  
-  resources: \["pods", "pods/log"\]  
-  verbs: \["get", "list"\]  
-\- apiGroups: \[""\]  
-  resources: \["pods/exec"\]  
-  verbs: \["create"\]  
-\---  
+- apiGroups: [""]  
+  resources: ["pods", "pods/log"]  
+  verbs: ["get", "list"]  
+- apiGroups: [""]  
+  resources: ["pods/exec"]  
+  verbs: ["create"]  
+---  
 apiVersion: rbac.authorization.k8s.io/v1  
 kind: RoleBinding  
 metadata:  
@@ -193,10 +193,10 @@ roleRef:
   kind: Role  
   name: pod-exec  
 subjects:  
-\- namespace: vault  
+- namespace: vault  
   kind: ServiceAccount  
   name: kubectl-vault  
-\---  
+---  
 apiVersion: batch/v1  
 kind: Job  
 metadata:  
@@ -256,7 +256,7 @@ data:
   
     # Set environmental variables for unseal key and root token  
     echo "Setting environmental variables for the Unseal Key and the Root Token"  
-    export VAULT_UNSEAL_KEY=$(cat init-keys.json | jq -r ".unseal_keys_b64\[\]")  
+    export VAULT_UNSEAL_KEY=$(cat init-keys.json | jq -r ".unseal_keys_b64[]")  
     export VAULT_ROOT_TOKEN=$(cat init-keys.json | jq -r ".root_token")  
     echo "VAULT_UNSEAL_KEY = $VAULT_UNSEAL_KEY"  
     echo "VAULT_ROOT_TOKEN = $VAULT_ROOT_TOKEN"  
@@ -396,7 +396,7 @@ metadata:
   creationTimestamp: null  
   name: ca-bundle  
   namespace: cert-manager  
-\---  
+---  
 apiVersion: rbac.authorization.k8s.io/v1  
 kind: ClusterRoleBinding  
 metadata:  
@@ -410,37 +410,37 @@ subjects:
   - kind: ServiceAccount  
     name: issuer  
     namespace: cert-manager  
-\---  
+---  
 apiVersion: rbac.authorization.k8s.io/v1  
 kind: Role  
 metadata:  
   name: cert-manager-issuer  
   namespace: cert-manager  
 rules:  
-\- apiGroups: \["cert-manager.io"\]  
-  resources: \["certificates", "certificaterequests"\]  
-  verbs: \["create", "delete"\]  
-\---  
+- apiGroups: ["cert-manager.io"]  
+  resources: ["certificates", "certificaterequests"]  
+  verbs: ["create", "delete"]  
+---  
 apiVersion: rbac.authorization.k8s.io/v1  
 kind: RoleBinding  
 metadata:  
   name: cert-manager-issuer-binding  
   namespace: cert-manager  
 subjects:  
-\- kind: ServiceAccount  
+- kind: ServiceAccount  
   name: issuer  
   namespace: cert-manager  
 roleRef:  
   kind: Role  
   name: cert-manager-issuer  
   apiGroup: rbac.authorization.k8s.io  
-\---  
+---  
 apiVersion: v1  
 kind: ServiceAccount  
 metadata:  
   name: issuer  
   namespace: cert-manager  
-\---  
+---  
 apiVersion: v1  
 kind: Secret  
 metadata:  
@@ -449,7 +449,7 @@ metadata:
   annotations:  
     kubernetes.io/service-account.name: issuer  
 type: kubernetes.io/service-account-token  
-\---  
+---  
 apiVersion: cert-manager.io/v1  
 kind: ClusterIssuer  
 metadata:  
@@ -482,8 +482,8 @@ Cert-Manager was then installed via Helm:
 
 ```bash
 helm repo add jetstack https://charts.jetstack.io  
-helm upgrade -i cert-manager jetstack/cert-manager --version v1.11.0 \\  
-\-f values.yaml -n cert-manager
+helm upgrade -i cert-manager jetstack/cert-manager --version v1.11.0 \  
+-f values.yaml -n cert-manager
 ```
 
 If this was all done properly, the `vault-issuer` object should have a status of `Ready`:
@@ -504,8 +504,8 @@ As was done for Vault and Cert-manager, a namespace will be imperatively created
 ```bash
 kubectl create ns podinfo  
 helm repo add stefanprodan https://stefanprodan.github.io/podinfo  
-helm upgrade -i my-podinfo stefanprodan/podinfo --version 6.4.0 \\  
-\-f values.yaml -n podinfo
+helm upgrade -i my-podinfo stefanprodan/podinfo --version 6.4.0 \  
+-f values.yaml -n podinfo
 ```
 
 Here is the values.yaml file:
