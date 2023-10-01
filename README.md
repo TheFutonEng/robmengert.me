@@ -10,11 +10,10 @@ The `-D` is required in order to render posts that have `draft: true` in the pos
 
 # Theme
 
-This blog site makes use of the [Hugo Geekblog theme](https://hugo-geekblog.geekdocs.de/).  Installation instructions below:
+This blog site makes use of the [Hugo Poison theme](https://poison.lukeorth.com/).  Installation instructions below:
 
 ```bash
-$ mkdir -p themes/hugo-geekblog/
-$ curl -L https://github.com/thegeeklab/hugo-geekblog/releases/latest/download/hugo-geekblog.tar.gz | tar -xz -C themes/hugo-geekblog/ --strip-components=1
+$ git submodule add https://github.com/lukeorth/poison.git themes/poison
 ```
 
 These instructions are taken directly from the Geekblog site.  They advise this method over adding the theme as a git module as is done in the Hugo quickstart for the `ananke` theme.  The reason being is that `npm install` and `npm run build` need to be executed after adding the theme as a module.
