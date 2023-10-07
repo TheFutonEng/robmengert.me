@@ -8,19 +8,49 @@ pluralizelisttitles = false
 [params]
     author = "Rob Mengert"
     brand = "Rob Mengert"
-    description = "I'm just a dude in the world"
+    description = "I'm just a dude in the world."
     profilePicture = "/images/headshot.png"
-    menu = [
-    {Name = "About", URL = "/about/", HasChildren = false},
-    {Name = "Posts", URL = "/posts/", Pre = "Recent", HasChildren = true, Limit = 5},
-    {Name = "Projects", URL = "", External = true, Limit = 5},
-    # {Name = "Battleship Solver", URL = "https://battleship.lukeorth.com", External = true, Limit = 5},
-    # {Name = "Poison Hugo Theme", URL = "https://github.com/lukeorth/poison", External = true, Limit = 5},
-    ]
 
-    github_url = "https://github.com/TheFutonEng/"
-    linkedin_url = "https://www.linkedin.com/in/robertmengert/"
-    twitter_url = "https://twitter.com/RobMengert"
+[[params.socialIcons]]
+icon = "fab fa-linkedin"
+title = "LinkedIn"
+url = "https://www.linkedin.com/in/robertmengert/"
+
+[[params.socialIcons]]
+icon = "fab fa-github"
+title = "Github"
+url = "https://github.com/TheFutonEng/"
+
+[[params.socialIcons]]
+icon = "fab fa-twitter"
+title = "Twitter"
+url = "https://twitter.com/RobMengert"
+
+[[params.socialIcons]]
+icon = "fas fa-envelope"
+title = "email"
+url = "mailto:rob.mengert@gmail.com"
+
+[menu]
+
+[[menu.main]]
+name = "Home"
+identifier = "home"
+weight = 100
+url  = "/"
+
+[[menu.main]]
+name = "Posts"
+identifier = "posts"
+weight = 200
+url  = "/posts"
+
+[[menu.main]]
+name = "About"
+identifier = "about"
+weight = 300
+url  = "/about/"
+
 
 [taxonomies]
     series = 'series'
