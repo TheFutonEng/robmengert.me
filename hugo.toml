@@ -1,7 +1,7 @@
 baseURL = "https://robmengert.me"
 languageCode = "en-us"
 title = "Personal Blog of Rob Mengert"
-theme = "poison"
+theme = "anatole"
 paginate = "10"
 pluralizelisttitles = false
 
@@ -9,7 +9,7 @@ pluralizelisttitles = false
     author = "Rob Mengert"
     brand = "Rob Mengert"
     description = "I'm just a dude in the world"
-    brand_image = "/images/headshot.png"
+    profilePicture = "/images/headshot.png"
     menu = [
     {Name = "About", URL = "/about/", HasChildren = false},
     {Name = "Posts", URL = "/posts/", Pre = "Recent", HasChildren = true, Limit = 5},
