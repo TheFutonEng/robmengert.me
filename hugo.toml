@@ -7,9 +7,14 @@ pluralizelisttitles = false
 
 [params]
     author = "Rob Mengert"
-    brand = "Rob Mengert"
-    description = "I'm just a dude in the world."
+    title = "Rob Mengert"
+    description = """
+    I'm just a dude in the world.
+    I enjoy spending time with my family, good beer,
+    and digging into tech.
+    """
     profilePicture = "/images/headshot.png"
+    googleSiteVerify = "l-MmkEB3NftrODT7Ht1-_Cyj_N0gvqdLZAisD7Y_-lA"
 
 [[params.socialIcons]]
 icon = "fab fa-linkedin"
@@ -49,9 +54,37 @@ url  = "/posts"
 name = "About"
 identifier = "about"
 weight = 300
-url  = "/about/"
+url  = "/about"
 
+[[menu.main]]
+name = "Certifications"
+identifier = "certifications"
+weight = 400
+url = "/certifications"
+
+[[menu.main]]
+name = "Publications"
+identifier = "publications"
+weight = 500
+url = "/publications"
+
+[markup]
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+        unsafe=true
 
 [taxonomies]
-    series = 'series'
-    tags = 'tags'
+    category = "categories"
+    series = "series"
+    tag = "tags"
+
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = true
+[[related.indices]]
+  name = 'keywords'
+  weight = 100
+[[related.indices]]
+  name = 'tags'
+  weight = 80

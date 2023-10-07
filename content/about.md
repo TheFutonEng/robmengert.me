@@ -13,4 +13,4 @@ I'm just a dude in the world.  I enjoy spending time with my family, good beer, 
  
 ## Currently Reading
 
-[Beating the Street - Peter Lynch](https://www.goodreads.com/book/show/762464.Beating_the_Street)
+[The Intelligent Investor - Benjamin Graham](https://www.goodreads.com/book/show/106835.The_Intelligent_Investor)
