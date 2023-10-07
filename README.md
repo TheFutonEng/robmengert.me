@@ -10,10 +10,10 @@ The `-D` is required in order to render posts that have `draft: true` in the pos
 
 # Theme
 
-This blog site makes use of the [Hugo Poison theme](https://poison.lukeorth.com/).  Installation instructions below:
+This blog site makes use of the [Hugo Anatole theme](https://github.com/lxndrblz/anatole).  Installation instructions below:
 
 ```bash
-$ git submodule add https://github.com/lukeorth/poison.git themes/poison
+$ git submodule add https://github.com/lxndrblz/anatole themes/anatole
 ```
 
-These instructions are taken directly from the Geekblog site.  They advise this method over adding the theme as a git module as is done in the Hugo quickstart for the `ananke` theme.  The reason being is that `npm install` and `npm run build` need to be executed after adding the theme as a module.
+These instructions are taken directly from the [Anatole wiki](https://github.com/lxndrblz/anatole/wiki/1%EF%B8%8F%E2%83%A3-Essential-Steps).  
