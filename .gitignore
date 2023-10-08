@@ -1,2 +1,5 @@
 # Temporary lock file while building
 /.hugo_build.lock
+
+# MacOS Desktop Services files
+.DS_Store

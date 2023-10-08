@@ -17,6 +17,11 @@ pluralizelisttitles = false
     googleSiteVerify = "l-MmkEB3NftrODT7Ht1-_Cyj_N0gvqdLZAisD7Y_-lA"
 
 [[params.socialIcons]]
+icon = "fas fa-envelope"
+title = "email"
+url = "mailto:rob.mengert@gmail.com"
+
+[[params.socialIcons]]
 icon = "fab fa-linkedin"
 title = "LinkedIn"
 url = "https://www.linkedin.com/in/robertmengert/"
@@ -32,9 +37,9 @@ title = "Twitter"
 url = "https://twitter.com/RobMengert"
 
 [[params.socialIcons]]
-icon = "fas fa-envelope"
-title = "email"
-url = "mailto:rob.mengert@gmail.com"
+icon = "fab fa-medium"
+title = "Medium"
+url = "https://rob-mengert.medium.com/"
 
 [menu]
 
