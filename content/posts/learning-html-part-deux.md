@@ -10,7 +10,7 @@ tags: ["html"]
 <!-- > medium-to-markdown@0.0.3 convert
 > node index.js https://rob-mengert.medium.com/html-learning-part-deux-eccb234d754 -->
 
-[I recently decided to start digging into frontend technologies](https://medium.com/@rob-mengert/im-going-to-become-a-frontend-dev-e77dc99eac6e). [I started with HTML](https://medium.com/@rob-mengert/learning-html-f869d8d1f044) and poked around a little. This post is picking up where the previous one left off.
+[I recently decided to start digging into frontend technologies](../im-going-to-become-a-frontend-dev/). [I started with HTML](../learning-html/) and poked around a little. This post is picking up where the previous one left off.
 
 Ordered Lists
 =============
